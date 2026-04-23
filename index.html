@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Animesh Bauri Portfolio | Web Developer</title>
-  <meta name="description" content="Animesh Bauri - Professional Web Developer Portfolio. View my projects, skills, and contact details.">
+
+  <meta name="description" content="I build high-converting, responsive websites for businesses. Hire Animesh Bauri for modern web development services.">
   <meta name="keywords" content="Animesh Bauri, Animesh Portfolio, Web Developer India">
   <meta name="author" content="Animesh Bauri">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  
   <style>
     :root {
       --primary: #ff3333;
@@ -64,8 +66,6 @@
       font-size: .85rem; cursor: pointer; transition: .3s; text-decoration: none;
     }
     .nav-btn:hover { background: #fff; transform: scale(1.05); }
-    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
-    .hamburger span { width: 25px; height: 2px; background: var(--primary); border-radius: 2px; transition: .3s; }
 
     /* ── FLOATING MOBILE NAV ── */
     .mobile-floating-nav {
@@ -91,12 +91,10 @@
     .hero-content h1 span { color: var(--primary); }
     .hero-content h2 {
       font-size: clamp(1rem, 2.5vw, 1.4rem);
-      font-weight: 400; color: var(--text2); margin-bottom: 24px;
+      font-weight: 600; color: var(--text2); margin-bottom: 24px;
     }
-    .typed-text { color: var(--primary); font-weight: 600; }
-    .cursor { animation: blink 1s infinite; color: var(--primary); }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .hero-desc { color: var(--text2); line-height: 1.8; margin-bottom: 36px; font-size: .95rem; }
+    .hero-desc { color: var(--text2); line-height: 1.8; margin-bottom: 20px; font-size: .95rem; }
+    
     .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
     .btn-primary {
       background: var(--primary); color: #000;
@@ -112,6 +110,13 @@
       transition: .3s; display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-outline:hover { background: var(--primary); color: #000; transform: translateY(-2px); }
+    
+    .trust-badges {
+      margin-top: 24px; color: var(--text2); font-size: 0.85rem; font-weight: 500;
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .trust-badges span i { color: var(--primary); margin-right: 4px; }
+
     .hero-image {
       flex: 1; display: flex; justify-content: center; align-items: center;
       position: relative;
@@ -229,7 +234,7 @@
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
     .port-card {
       border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
-      transition: .3s; position: relative; group: true;
+      transition: .3s; position: relative; background: var(--bg3);
     }
     .port-card:hover { transform: translateY(-6px); border-color: rgba(255, 51, 51, .4); }
     .port-img {
@@ -252,9 +257,37 @@
       text-decoration: none; transition: .2s;
     }
     .port-overlay a:hover { transform: scale(1.1); }
-    .port-info { background: var(--bg3); padding: 20px 24px; }
+    
+    .port-info { padding: 20px 24px; }
     .port-info span { color: var(--primary); font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
     .port-info h4 { font-size: 1rem; font-weight: 700; margin-top: 4px; }
+    
+    /* NEW LIVE DEMO BUTTON STYLES */
+    .port-demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: .3s;
+    }
+    .port-demo-btn:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+    .port-demo-btn.disabled {
+      color: var(--text2);
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    /* ── CTA SECTION ── */
+    #cta { text-align:center; padding:70px 8%; background: var(--bg2); border-top: 1px solid var(--border); }
+    #cta h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 10px; }
+    #cta p { color: var(--text2); margin-bottom: 24px; font-size: 1rem; }
 
     /* ── EDUCATION ── */
     #education { background: var(--bg2); }
@@ -275,7 +308,7 @@
     .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
     .contact-info h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; }
     .contact-info h3 span { color: var(--primary); }
-    .contact-info p { color: var(--text2); line-height: 1.8; font-size: .9rem; margin-bottom: 28px; }
+    .contact-info p { color: var(--text2); line-height: 1.8; font-size: .9rem; margin-bottom: 10px; }
     .contact-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
     .c-icon {
       width: 44px; height: 44px; border-radius: 10px;
@@ -307,11 +340,6 @@
       width: fit-content;
     }
     .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 51, 51, .4); }
-    .form-success {
-      display: none; color: var(--primary); font-size: .9rem;
-      padding: 12px; border: 1px solid rgba(255, 51, 51, .3);
-      border-radius: 8px; text-align: center; background: rgba(255, 51, 51, .05);
-    }
 
     /* ── FOOTER ── */
     footer {
@@ -343,82 +371,40 @@
     #scrollTop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
     #scrollTop:hover { transform: translateY(-3px); }
 
-    /* ── COUNTERS ── */
-    .stats-strip {
-      background: rgba(255, 51, 51, .05); border: 1px solid var(--border);
-      border-radius: 14px; padding: 32px; margin-top: 40px;
-      display: grid; grid-template-columns: repeat(3, 1fr); text-align: center;
-    }
-    .stat-item strong { font-size: 2rem; font-weight: 800; color: var(--primary); }
-    .stat-item p { color: var(--text2); font-size: .82rem; margin-top: 4px; }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      /* Hide standard navs on mobile to show floating dock */
-      .hamburger { display: none !important; }
-      .nav-links { display: none !important; }
-      .nav-btn { display: none !important; }
-
-      /* Floating Nav Styles - Updated for small screens */
+      .nav-links, .nav-btn { display: none !important; }
       .mobile-floating-nav {
-        display: flex;
-        position: fixed;
-        bottom: max(20px, env(safe-area-inset-bottom)); 
-        left: 50%;
-        transform: translateX(-50%);
-        width: 92%;           
-        max-width: 380px;     
-        justify-content: space-around; 
-        background: rgba(10, 10, 10, 0.85);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 51, 51, 0.3);
-        padding: 10px 8px;
-        border-radius: 50px;
-        z-index: 1000;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        display: flex; position: fixed; bottom: max(20px, env(safe-area-inset-bottom)); 
+        left: 50%; transform: translateX(-50%); width: 92%; max-width: 380px;     
+        justify-content: space-around; background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(15px); border: 1px solid rgba(255, 51, 51, 0.3);
+        padding: 10px 8px; border-radius: 50px; z-index: 1000; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
       }
-
       .mobile-floating-nav a {
-        color: var(--text2);
-        font-size: 1.1rem;   
-        width: 42px;         
-        height: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: 0.3s;
-        text-decoration: none;
+        color: var(--text2); font-size: 1.1rem; width: 42px; height: 42px;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 50%; transition: 0.3s; text-decoration: none;
       }
-
-      .mobile-floating-nav a.active,
-      .mobile-floating-nav a:hover {
-        background: var(--primary);
-        color: #000;
-        transform: translateY(-5px);
+      .mobile-floating-nav a.active, .mobile-floating-nav a:hover {
+        background: var(--primary); color: #000; transform: translateY(-5px);
         box-shadow: 0 5px 15px rgba(255, 51, 51, 0.4);
       }
-      
-      /* Hide the scroll-to-top button on mobile so it doesn't overlap the nav */
       #scrollTop { display: none !important; }
 
       #home { flex-direction: column; text-align: center; gap: 48px; }
       .hero-btns { justify-content: center; }
       .social-links { justify-content: center; }
+      .trust-badges { justify-content: center; }
       .hero-image { order: -1; }
       .hero-img-wrapper { width: 260px; height: 260px; }
       .about-grid { grid-template-columns: 1fr; }
-      .exp-timeline::before { left: 20px; }
-      .exp-item, .exp-item:nth-child(odd) { flex-direction: column; padding-left: 50px; }
-      .exp-dot { left: 20px; }
-      .exp-card { max-width: 100%; }
       .contact-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       nav { padding: 16px 5%; }
     }
     @media (max-width: 540px) {
       section { padding: 70px 5%; }
-      .stats-strip { grid-template-columns: 1fr; gap: 20px; }
     }
 
     /* ── ANIMATE ON SCROLL ── */
@@ -427,41 +413,6 @@
       transition: opacity .7s ease, transform .7s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── LANDSCAPE MOBILE RESPONSIVENESS FIX ── */
-    @media screen and (max-height: 500px) and (orientation: landscape) {
-      #home {
-        min-height: auto; 
-        padding: 80px 8% 40px; 
-        flex-direction: row; 
-        text-align: left; 
-        justify-content: space-between;
-        gap: 30px;
-      }
-      .hero-content {
-        max-width: 55%;
-      }
-      .hero-image {
-        order: initial; 
-        max-width: 40%;
-      }
-      .hero-img-wrapper {
-        width: 180px; height: 180px; 
-        margin-top: 0;
-      }
-      .hero-tag { margin-bottom: 8px; }
-      .hero-content h1 { font-size: 2rem; margin-bottom: 8px; } 
-      .typed-text { font-size: 1.1rem; }
-      .hero-desc { margin-bottom: 20px; font-size: 0.9rem; }
-      .social-links { margin-top: 20px; justify-content: flex-start; }
-
-      section { padding: 40px 8%; }
-      .section-header { margin-bottom: 30px; }
-      .about-grid, .contact-grid { gap: 30px; }
-      .skills-grid, .services-grid, .portfolio-grid { gap: 16px; }
-
-      nav { padding: 12px 5%; }
-    }
   </style>
 </head>
 <body>
@@ -489,20 +440,29 @@
 
 <section id="home">
   <div class="hero-content fade-up">
-    <div class="hero-tag">👋 Welcome to my portfolio</div>
-    <h1>Hi, I'm <span>Animesh</span></h1>
-    <h2>I'm a <span class="typed-text" id="typedText"></span><span class="cursor">|</span></h2>
+    <div class="hero-tag">🚀 Available for Freelance Projects</div>
+    <h1>I build <span>high-converting websites</span> that grow your business</h1>
+    <h2>Animesh Bauri | Frontend Developer</h2>
     <p class="hero-desc">
-      I'm a passionate web developer and designer who loves turning creative ideas into beautiful, 
-      functional digital experiences. Let's build something amazing together!
+      I help businesses create fast, responsive, and high-converting websites that attract customers and increase sales.
+    </p>
+    <p style="margin-top:-20px; font-size:0.85rem; color:#aaa; margin-bottom: 36px;">
+      Helping businesses grow online with modern, conversion-focused web design.
     </p>
     <div class="hero-btns">
       <a href="#portfolio" class="btn-primary"><i class="fas fa-eye"></i> View Work</a>
       <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Contact Me</a>
     </div>
+    <div class="trust-badges">
+      <span><i class="fas fa-check-circle"></i> Fast Delivery</span>
+      <span><i class="fas fa-check-circle"></i> Clean Code</span>
+      <span><i class="fas fa-check-circle"></i> Mobile Responsive</span>
+      <span><i class="fas fa-check-circle"></i> SEO Friendly</span>
+    </div>
     <div class="social-links">
       <a href="https://github.com/Kiraa888" target="_blank"><i class="fab fa-github"></i></a>
       <a href="mailto:baurianimesh957@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+      <a href="https://wa.me/916295650199" target="_blank"><i class="fab fa-whatsapp"></i></a>
       <a href="https://www.facebook.com/share/17GWVwkzK2/" target="_blank"><i class="fab fa-facebook-f"></i></a>
       <a href="https://www.instagram.com/somesh_0620?igsh=ZXVyeWNhc2x3Nzdk" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
@@ -530,10 +490,8 @@
     </div>
     <div class="about-text">
       <h3>A dedicated <span>Frontend Developer</span></h3>
-      <p>I'm a passionate web developer with expertise in crafting beautiful, responsive websites 
-      and applications. I love working with modern technologies to create seamless user experiences.</p>
-      <p>When I'm not coding, you'll find me exploring new design trends, contributing to open source, 
-      or sharing my knowledge through tutorials and blog posts.</p>
+      <p>I specialize in building modern, fast, and conversion-focused websites for businesses and personal brands.</p>
+      <p>My goal is simple — help you get more customers, generate leads, and grow your business through powerful web design.</p>
       <div class="about-info">
         <div class="info-item">
           <strong>Name</strong>
@@ -552,12 +510,7 @@
           <span>Open to Work ✅</span>
         </div>
       </div>
-      <a href="Animesh_Bauri_CV.pdf" class="btn-primary"><i class="fas fa-download"></i> Download CV</a>
-      <div class="stats-strip">
-        <div class="stat-item"><strong>10+</strong><p>Projects Done</p></div>
-        <div class="stat-item"><strong>7+</strong><p>Happy Clients</p></div>
-        <div class="stat-item"><strong>1.5+</strong><p>Years Exp.</p></div>
-      </div>
+      <a href="cv.pdf" download class="btn-primary"><i class="fas fa-download"></i> Download CV</a>
     </div>
   </div>
 </section>
@@ -567,10 +520,10 @@
     <p class="section-tag">What I Know</p>
     <h2>My <span>Skills</span></h2>
     <div class="divider"></div>
-    <p>Technologies and tools I work with</p>
+    <p>Technologies and tools I use to build seamless web experiences.</p>
   </div>
   <div class="skills-grid fade-up" id="skillsGrid">
-    </div>
+  </div>
 </section>
 
 <section id="services">
@@ -582,34 +535,34 @@
   </div>
   <div class="services-grid fade-up">
     <div class="service-card">
-      <div class="service-icon"><i class="fas fa-code"></i></div>
-      <h3>Web Development</h3>
-      <p>Building fast, responsive, and modern websites using the latest technologies like React, HTML5, CSS3, and JavaScript.</p>
+      <div class="service-icon"><i class="fas fa-store"></i></div>
+      <h3>Business Website</h3>
+      <p>I create professional websites for businesses to improve online presence and attract customers.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-      <h3>UI/UX Design</h3>
-      <p>Creating beautiful, user-centered designs with intuitive interfaces that delight users and achieve business goals.</p>
+      <div class="service-icon"><i class="fas fa-rocket"></i></div>
+      <h3>Landing Pages</h3>
+      <p>High-converting landing pages designed specifically to turn your visitors into leads and paying clients.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+      <h3>E-Commerce Solutions</h3>
+      <p>Complete online storefronts with seamless checkout flows to help you sell products directly to your audience.</p>
     </div>
     <div class="service-card">
       <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
       <h3>Responsive Design</h3>
-      <p>Ensuring your website looks and works perfectly across all devices — desktop, tablet, and mobile.</p>
+      <p>Ensuring your website looks and functions perfectly across all devices — desktop, tablet, and mobile.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon"><i class="fas fa-search"></i></div>
-      <h3>SEO Optimization</h3>
-      <p>Improving your website's visibility on search engines to attract more organic traffic and grow your online presence.</p>
+      <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+      <h3>UI/UX Design</h3>
+      <p>Creating intuitive, user-centered interfaces that provide an engaging and effortless experience for your users.</p>
     </div>
     <div class="service-card">
-      <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-      <h3>E-Commerce</h3>
-      <p>Developing complete online store solutions with secure payment gateways, product management, and smooth checkout flows.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-      <h3>Performance Audit</h3>
-      <p>Analyzing and optimizing your website for speed, performance, and Core Web Vitals to improve user experience.</p>
+      <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
+      <h3>Performance Optimization</h3>
+      <p>Speeding up your website to improve Google rankings, keep visitors engaged, and boost overall conversions.</p>
     </div>
   </div>
 </section>
@@ -619,7 +572,7 @@
     <p class="section-tag">My Work</p>
     <h2>Recent <span>Projects</span></h2>
     <div class="divider"></div>
-    <p>A selection of my recent work</p>
+    <p>A selection of websites built for real results</p>
   </div>
   <div class="filter-tabs fade-up" id="filterTabs">
     <button class="filter-btn active" onclick="filterPortfolio('all', this)">All</button>
@@ -628,7 +581,13 @@
     <button class="filter-btn" onclick="filterPortfolio('app', this)">App</button>
   </div>
   <div class="portfolio-grid fade-up" id="portfolioGrid">
-    </div>
+  </div>
+</section>
+
+<section id="cta" class="fade-up">
+  <h2>Have a project in mind?</h2>
+  <p>I can help you build a website that attracts customers and grows your business.</p>
+  <a href="#contact" class="btn-primary">Start Your Project</a>
 </section>
 
 <section id="education">
@@ -658,12 +617,14 @@
     <p class="section-tag">Get In Touch</p>
     <h2>Contact <span>Me</span></h2>
     <div class="divider"></div>
-    <p>Have a project in mind? Let's work together!</p>
+    <p>Let's discuss how we can work together.</p>
   </div>
   <div class="contact-grid fade-up">
     <div class="contact-info">
-      <h3>Let's Talk <span>Business</span></h3>
-      <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Don't hesitate to reach out!</p>
+      <h3>Let’s build <span>your website</span></h3>
+      <p>I'm always open to discussing new projects, creative ideas, or opportunities to help your business grow. Don't hesitate to reach out!</p>
+      <p style="margin-top:10px; color:#aaa; font-size: 0.9rem; margin-bottom: 24px;">After you contact me, I’ll discuss your requirements and suggest the best solution for your project.</p>
+      
       <div class="contact-item">
         <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
         <div class="c-detail"><strong>Location</strong><span>Vill - Khantra, Raghunathpur, Purulia, WB - 723145</span></div>
@@ -675,6 +636,10 @@
       <div class="contact-item">
         <div class="c-icon"><i class="fas fa-phone"></i></div>
         <div class="c-detail"><strong>Phone</strong><span><a href="tel:+916295650199" style="color:inherit; text-decoration:none;">+91 6295 650 199</a></span></div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon"><i class="fas fa-clock"></i></div>
+        <div class="c-detail"><strong>Response Time</strong><span>Within 24 hours</span></div>
       </div>
       <div class="contact-item">
         <div class="c-icon"><i class="fab fa-whatsapp"></i></div>
@@ -706,16 +671,16 @@
         <div class="form-group">
           <label>Service Required</label>
           <select name="service">
-            <option>Web Development</option>
-            <option>UI/UX Design</option>
+            <option>Business Website</option>
+            <option>Landing Page</option>
             <option>E-Commerce</option>
-            <option>SEO Optimization</option>
+            <option>UI/UX Design</option>
             <option>Other</option>
           </select>
         </div>
         <div class="form-group">
           <label>Your Message *</label>
-          <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+          <textarea name="message" placeholder="Tell me about your project requirements..." required></textarea>
         </div>
         <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
       </form>
@@ -728,6 +693,7 @@
   <div class="footer-socials">
     <a href="https://github.com/Kiraa888" target="_blank"><i class="fab fa-github"></i></a>
     <a href="mailto:baurianimesh957@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    <a href="https://wa.me/916295650199" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <a href="https://www.facebook.com/share/17GWVwkzK2/" target="_blank"><i class="fab fa-facebook-f"></i></a>
     <a href="https://www.instagram.com/somesh_0620?igsh=ZXVyeWNhc2x3Nzdk" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
@@ -739,23 +705,6 @@
 </button>
 
 <script>
-  /* ── TYPED TEXT ── */
-  const roles = ['Web Developer','UI/UX Designer','Freelancer','Problem Solver'];
-  let ri = 0, ci = 0, del = false;
-  function type() {
-    const el = document.getElementById('typedText');
-    const cur = roles[ri];
-    if (!del) {
-      el.textContent = cur.slice(0, ++ci);
-      if (ci === cur.length) { del = true; setTimeout(type, 1500); return; }
-    } else {
-      el.textContent = cur.slice(0, --ci);
-      if (ci === 0) { del = false; ri = (ri + 1) % roles.length; }
-    }
-    setTimeout(type, del ? 60 : 100);
-  }
-  type();
-
   /* ── SKILLS DATA ── */
   const skills = [
     { icon: 'fab fa-html5', name: 'HTML5', pct: 90 },
@@ -782,31 +731,77 @@
   const projects = [
     { 
       icon: 'fas fa-user-tie', 
-      title: 'Business Website', 
+      title: 'Business Website for Local Brand', 
       cat: 'web', 
       type: 'Web Dev',
+      description: 'Built a responsive website that helped the business attract more local customers, resulting in a 30% increase in inquiries.',
       liveLink: 'https://kiraa888.github.io/Business-Website/',
       repoLink: 'https://github.com/Kiraa888/Business-Website'
+    },
+    { 
+      icon: 'fas fa-bolt', 
+      title: 'High-Converting Landing Page', 
+      cat: 'web', 
+      type: 'Web Dev',
+      description: 'Designed to capture customer leads quickly, boost overall marketing ROI, and maximize conversions.',
+      liveLink: '#',
+      repoLink: '#'
+    },
+    { 
+      icon: 'fas fa-camera-retro', 
+      title: 'Creative Agency Portfolio', 
+      cat: 'design', 
+      type: 'Design',
+      description: 'A modern, image-focused UI created to showcase professional photography and drive better engagement.',
+      liveLink: '#',
+      repoLink: '#'
+    },
+    { 
+      icon: 'fas fa-shopping-bag', 
+      title: 'E-Commerce Storefront', 
+      cat: 'app', 
+      type: 'E-Commerce',
+      description: 'Clean product grid UI integrated with a seamless checkout flow design to increase sales conversion.',
+      liveLink: '#',
+      repoLink: '#'
     }
   ];
   
   function renderPortfolio(cat) {
     const pg = document.getElementById('portfolioGrid');
     const filtered = cat === 'all' ? projects : projects.filter(p => p.cat === cat);
-    pg.innerHTML = filtered.map(p => `
+    pg.innerHTML = filtered.map(p => {
+      // Icon Links for Image Overlay
+      const liveAnchor = p.liveLink === '#' 
+        ? `<a href="#" onclick="return false;" style="cursor:default;" title="Coming Soon"><i class="fas fa-external-link-alt"></i></a>` 
+        : `<a href="${p.liveLink}" target="_blank" rel="noopener noreferrer" title="View Live Site"><i class="fas fa-external-link-alt"></i></a>`;
+        
+      const repoAnchor = p.repoLink === '#' 
+        ? `<a href="#" onclick="return false;" style="cursor:default;" title="Coming Soon"><i class="fab fa-github"></i></a>` 
+        : `<a href="${p.repoLink}" target="_blank" rel="noopener noreferrer" title="View Source Code"><i class="fab fa-github"></i></a>`;
+
+      // New Text Button for underneath the description
+      const liveDemoBtn = p.liveLink === '#'
+        ? `<a href="#" onclick="return false;" class="port-demo-btn disabled"><i class="fas fa-lock"></i> Coming Soon</a>`
+        : `<a href="${p.liveLink}" target="_blank" rel="noopener noreferrer" class="port-demo-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
+
+      return `
       <div class="port-card">
         <div class="port-img">
           <i class="${p.icon}"></i>
           <div class="port-overlay">
-            <a href="${p.liveLink}" target="_blank" rel="noopener noreferrer" title="View Live Site"><i class="fas fa-external-link-alt"></i></a>
-            <a href="${p.repoLink}" target="_blank" rel="noopener noreferrer" title="View Source Code"><i class="fab fa-github"></i></a>
+            ${liveAnchor}
+            ${repoAnchor}
           </div>
         </div>
         <div class="port-info">
           <span>${p.type}</span>
           <h4>${p.title}</h4>
+          <p style="font-size:0.85rem; color:var(--text2); margin-top:8px; line-height:1.5;">${p.description}</p>
+          ${liveDemoBtn}
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
   }
   renderPortfolio('all');
 
