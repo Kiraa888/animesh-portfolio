@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animesh Bauri Portfolio | Web Developer</title>
+
+  <meta name="description" content="I build high-converting, responsive websites for businesses. Hire Animesh Bauri for modern web development services.">
+  <meta name="keywords" content="Animesh Bauri, Animesh Portfolio, Web Developer India">
+  <meta name="author" content="Animesh Bauri">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root {
+      --primary: #ff3333;
+      --primary-dark: #cc0000;
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --bg3: #1a1a1a;
+      --text: #ffffff;
+      --text2: #aaaaaa;
+      --border: rgba(255, 51, 51, 0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 8%;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: .3s;
+    }
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
+    .logo span { color: #fff; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text2); text-decoration: none; font-size: .9rem;
+      font-weight: 500; transition: .3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--primary); transition: .3s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-btn {
+      background: var(--primary); color: #000; border: none;
+      padding: 10px 24px; border-radius: 25px; font-weight: 700;
+      font-size: .85rem; cursor: pointer; transition: .3s; text-decoration: none;
+    }
+    .nav-btn:hover { background: #fff; transform: scale(1.05); }
+
+    /* ── FLOATING MOBILE NAV ── */
+    .mobile-floating-nav {
+      display: none;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 8% 80px;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255, 51, 51, 0.06) 0%, transparent 65%);
+    }
+    .hero-content { flex: 1; max-width: 600px; }
+    .hero-tag {
+      display: inline-block; color: var(--primary);
+      font-size: .85rem; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800; line-height: 1.15; margin-bottom: 14px;
+    }
+    .hero-content h1 span { color: var(--primary); }
+    .hero-content h2 {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 600; color: var(--text2); margin-bottom: 24px;
+    }
+    .hero-desc { color: var(--text2); line-height: 1.8; margin-bottom: 20px; font-size: .95rem; }
+    
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--primary); color: #000;
+      padding: 13px 32px; border-radius: 30px;
+      font-weight: 700; text-decoration: none; font-size: .9rem;
+      transition: .3s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 51, 51, .4); }
+    .btn-outline {
+      border: 2px solid var(--primary); color: var(--primary);
+      padding: 12px 32px; border-radius: 30px;
+      font-weight: 700; text-decoration: none; font-size: .9rem;
+      transition: .3s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline:hover { background: var(--primary); color: #000; transform: translateY(-2px); }
+    
+    .trust-badges {
+      margin-top: 24px; color: var(--text2); font-size: 0.85rem; font-weight: 500;
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .trust-badges span i { color: var(--primary); margin-right: 4px; }
+
+    .hero-image {
+      flex: 1; display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .hero-img-wrapper {
+      width: 340px; height: 340px; border-radius: 50%;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 40px rgba(255, 51, 51, .3);
+      overflow: hidden; position: relative;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+    .hero-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .social-links { display: flex; gap: 14px; margin-top: 32px; }
+    .social-links a {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text2); font-size: .95rem;
+      transition: .3s; text-decoration: none;
+    }
+    .social-links a:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 8%; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-tag {
+      color: var(--primary); font-size: .8rem; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800;
+    }
+    .section-header h2 span { color: var(--primary); }
+    .section-header p { color: var(--text2); margin-top: 12px; font-size: .95rem; }
+    .divider {
+      width: 60px; height: 3px; background: var(--primary);
+      margin: 14px auto 0; border-radius: 2px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-img-box {
+      position: relative; border-radius: 16px; overflow: hidden;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #2e1a1a, #600f0f);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+    .about-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: var(--primary); color: #000;
+      padding: 12px 20px; border-radius: 12px; font-weight: 700;
+    }
+    .about-badge span { display: block; font-size: 1.8rem; line-height: 1; }
+    .about-badge p { font-size: .75rem; }
+    .about-text h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 16px; }
+    .about-text h3 span { color: var(--primary); }
+    .about-text p { color: var(--text2); line-height: 1.9; margin-bottom: 16px; font-size: .95rem; }
+    .about-info { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+    .info-item { display: flex; flex-direction: column; gap: 2px; }
+    .info-item strong { color: var(--primary); font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; }
+    .info-item span { font-size: .9rem; color: var(--text2); }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .skill-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px 24px; transition: .3s;
+      position: relative; overflow: hidden;
+    }
+    .skill-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--primary); transform: scaleX(0); transition: .3s; transform-origin: left;
+    }
+    .skill-card:hover { transform: translateY(-6px); border-color: rgba(255, 51, 51, .4); }
+    .skill-card:hover::before { transform: scaleX(1); }
+    .skill-card i { font-size: 2rem; color: var(--primary); margin-bottom: 14px; display: block; }
+    .skill-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+    .skill-bar-bg { background: rgba(255, 51, 51, .1); border-radius: 4px; height: 6px; overflow: hidden; }
+    .skill-bar { height: 100%; background: var(--primary); border-radius: 4px; transition: width 1.5s ease; }
+    .skill-pct { font-size: .8rem; color: var(--primary); font-weight: 600; margin-top: 6px; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--bg2); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+    .service-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px 28px; transition: .3s; text-align: center;
+    }
+    .service-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(255, 51, 51, .1); }
+    .service-icon {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: rgba(255, 51, 51, .1); border: 2px solid rgba(255, 51, 51, .2);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 1.6rem; color: var(--primary); transition: .3s;
+    }
+    .service-card:hover .service-icon { background: var(--primary); color: #000; }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; }
+    .service-card p { color: var(--text2); font-size: .88rem; line-height: 1.8; }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { background: var(--bg); }
+    .filter-tabs { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+    .filter-btn {
+      padding: 8px 22px; border-radius: 25px; border: 2px solid var(--border);
+      background: transparent; color: var(--text2); cursor: pointer;
+      font-size: .85rem; font-weight: 500; transition: .3s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--primary); border-color: var(--primary); color: #000; font-weight: 700; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .port-card {
+      border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+      transition: .3s; position: relative; background: var(--bg3);
+    }
+    .port-card:hover { transform: translateY(-6px); border-color: rgba(255, 51, 51, .4); }
+    
+    /* ── UPDATED PORT-IMG CSS ── */
+    .port-img {
+      aspect-ratio: 16 / 9;
+      position: relative; overflow: hidden;
+      background: var(--bg2);
+    }
+    .port-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+    }
+    
+    .port-card:hover .port-img img {
+      transform: scale(1.08);
+    }
+    .port-overlay {
+      position: absolute; inset: 0;
+      background: rgba(255, 51, 51, .85);
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      opacity: 0; transition: .3s;
+    }
+    .port-card:hover .port-overlay { opacity: 1; }
+    .port-overlay a {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #000; color: var(--primary); font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: .2s;
+    }
+    .port-overlay a:hover { transform: scale(1.1); }
+    
+    .port-info { padding: 20px 24px; }
+    .port-info span { color: var(--primary); font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .port-info h4 { font-size: 1rem; font-weight: 700; margin-top: 4px; }
+    
+    .port-demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: .3s;
+    }
+    .port-demo-btn:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+    .port-demo-btn.disabled {
+      color: var(--text2);
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    /* ── CTA SECTION ── */
+    #cta { text-align:center; padding:70px 8%; background: var(--bg2); border-top: 1px solid var(--border); }
+    #cta h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 10px; }
+    #cta p { color: var(--text2); margin-bottom: 24px; font-size: 1rem; }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--bg2); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .edu-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px 24px; transition: .3s;
+    }
+    .edu-card:hover { border-color: var(--primary); transform: translateY(-4px); }
+    .edu-year { color: var(--primary); font-size: .8rem; font-weight: 600; margin-bottom: 12px; }
+    .edu-icon { font-size: 2rem; color: var(--primary); margin-bottom: 14px; }
+    .edu-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .edu-card p { color: var(--text2); font-size: .88rem; line-height: 1.7; }
+    .edu-institute { color: var(--primary); font-size: .85rem; font-weight: 600; margin-bottom: 8px; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
+    .contact-info h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; }
+    .contact-info h3 span { color: var(--primary); }
+    .contact-info p { color: var(--text2); line-height: 1.8; font-size: .9rem; margin-bottom: 10px; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 20px; }
+    .c-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(255, 51, 51, .1); border: 1px solid rgba(255, 51, 51, .2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: .95rem; flex-shrink: 0;
+    }
+    .c-detail strong { display: block; font-size: .85rem; text-transform: uppercase; color: var(--text2); letter-spacing: 1px; }
+    .c-detail span { font-size: .92rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: .82rem; color: var(--text2); font-weight: 500; }
+    .form-group input, .form-group textarea, .form-group select {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 16px; color: var(--text);
+      font-family: 'Poppins', sans-serif; font-size: .9rem; transition: .3s;
+      outline: none; resize: none;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255, 51, 51, .1);
+    }
+    .form-group textarea { height: 130px; }
+    .submit-btn {
+      background: var(--primary); color: #000; border: none;
+      padding: 14px 40px; border-radius: 30px; font-weight: 700;
+      font-size: .9rem; cursor: pointer; transition: .3s;
+      display: flex; align-items: center; gap: 8px; justify-content: center;
+      width: fit-content;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 51, 51, .4); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 40px 8%; text-align: center;
+    }
+    footer .footer-logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
+    footer .footer-logo span { color: #fff; }
+    footer p { color: var(--text2); font-size: .88rem; }
+    footer p span { color: var(--primary); }
+    .footer-socials { display: flex; gap: 12px; justify-content: center; margin: 20px 0; }
+    .footer-socials a {
+      width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text2); font-size: .85rem; text-decoration: none; transition: .3s;
+    }
+    .footer-socials a:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ── SCROLL TO TOP ── */
+    #scrollTop {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--primary); color: #000; border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; cursor: pointer; z-index: 999;
+      opacity: 0; transform: translateY(10px);
+      transition: .3s; pointer-events: none;
+    }
+    #scrollTop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    #scrollTop:hover { transform: translateY(-3px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-btn { display: none !important; }
+      .mobile-floating-nav {
+        display: flex; position: fixed; bottom: max(20px, env(safe-area-inset-bottom)); 
+        left: 50%; transform: translateX(-50%); width: 92%; max-width: 380px;     
+        justify-content: space-around; background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(15px); border: 1px solid rgba(255, 51, 51, 0.3);
+        padding: 10px 8px; border-radius: 50px; z-index: 1000; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      }
+      .mobile-floating-nav a {
+        color: var(--text2); font-size: 1.1rem; width: 42px; height: 42px;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 50%; transition: 0.3s; text-decoration: none;
+      }
+      .mobile-floating-nav a.active, .mobile-floating-nav a:hover {
+        background: var(--primary); color: #000; transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(255, 51, 51, 0.4);
+      }
+      #scrollTop { display: none !important; }
+
+      #home { flex-direction: column; text-align: center; gap: 48px; }
+      .hero-btns { justify-content: center; }
+      .social-links { justify-content: center; }
+      .trust-badges { justify-content: center; }
+      .hero-image { order: -1; }
+      .hero-img-wrapper { width: 260px; height: 260px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      nav { padding: 16px 5%; }
+    }
+    @media (max-width: 540px) {
+      section { padding: 70px 5%; }
+    }
+
+    /* ── ANIMATE ON SCROLL ── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="logo">Port<span>folio.</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Hire Me</a>
+</nav>
+
+<div class="mobile-floating-nav">
+  <a href="#home" class="nav-icon active"><i class="fas fa-home"></i></a>
+  <a href="#about" class="nav-icon"><i class="fas fa-user"></i></a>
+  <a href="#skills" class="nav-icon"><i class="fas fa-laptop-code"></i></a>
+  <a href="#portfolio" class="nav-icon"><i class="fas fa-briefcase"></i></a>
+  <a href="#contact" class="nav-icon"><i class="fas fa-envelope"></i></a>
+</div>
+
+<section id="home">
+  <div class="hero-content fade-up">
+    <div class="hero-tag">🚀 Available for Freelance Projects</div>
+    <h1>I build <span>high-converting websites</span> that grow your business</h1>
+    <h2>Animesh Bauri | Frontend Developer</h2>
+    <p class="hero-desc">
+      I help businesses create fast, responsive, and high-converting websites that attract customers and increase sales.
+    </p>
+    <p style="margin-top:-20px; font-size:0.85rem; color:#aaa; margin-bottom: 36px;">
+      Helping businesses grow online with modern, conversion-focused web design.
+    </p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary"><i class="fas fa-eye"></i> View Work</a>
+      <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Contact Me</a>
+    </div>
+    <div class="trust-badges">
+      <span><i class="fas fa-check-circle"></i> Fast Delivery</span>
+      <span><i class="fas fa-check-circle"></i> Clean Code</span>
+      <span><i class="fas fa-check-circle"></i> Mobile Responsive</span>
+      <span><i class="fas fa-check-circle"></i> SEO Friendly</span>
+    </div>
+    <div class="social-links">
+      <a href="https://github.com/Kiraa888" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:baurianimesh957@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+      <a href="https://wa.me/916295650199" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/share/17GWVwkzK2/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/somesh_0620?igsh=ZXVyeWNhc2x3Nzdk" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+  <div class="hero-image fade-up">
+    <div class="hero-img-wrapper">
+      <img src="https://iili.io/B4xVOPf.png" alt="Animesh Profile Photo" />
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-header fade-up">
+    <p class="section-tag">Who I Am</p>
+    <h2>About <span>Me</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="about-grid fade-up">
+    <div class="about-img-box">
+      <img src="https://iili.io/B4TwxDl.png" alt="Animesh About Photo" />
+      <div class="about-badge">
+        <span>1.5+</span>
+        <p>Years Experience</p>
+      </div>
+    </div>
+    <div class="about-text">
+      <h3>A dedicated <span>Frontend Developer</span></h3>
+      <p>I specialize in building modern, fast, and conversion-focused websites for businesses and personal brands.</p>
+      <p>My goal is simple — help you get more customers, generate leads, and grow your business through powerful web design.</p>
+      <div class="about-info">
+        <div class="info-item">
+          <strong>Name</strong>
+          <span>Animesh Bauri</span>
+        </div>
+        <div class="info-item">
+          <strong>Email</strong>
+          <span>baurianimesh957@gmail.com</span>
+        </div>
+        <div class="info-item">
+          <strong>Location</strong>
+          <span>Vill - Khantra, Purulia, West Bengal</span>
+        </div>
+        <div class="info-item">
+          <strong>Availability</strong>
+          <span>Open to Work ✅</span>
+        </div>
+      </div>
+      <a href="cv.pdf" download class="btn-primary"><i class="fas fa-download"></i> Download CV</a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-header fade-up">
+    <p class="section-tag">What I Know</p>
+    <h2>My <span>Skills</span></h2>
+    <div class="divider"></div>
+    <p>Technologies and tools I use to build seamless web experiences.</p>
+  </div>
+  <div class="skills-grid fade-up" id="skillsGrid">
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-header fade-up">
+    <p class="section-tag">What I Offer</p>
+    <h2>My <span>Services</span></h2>
+    <div class="divider"></div>
+    <p>Here's how I can help you grow your digital presence</p>
+  </div>
+  <div class="services-grid fade-up">
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-store"></i></div>
+      <h3>Business Website</h3>
+      <p>I create professional websites for businesses to improve online presence and attract customers.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-rocket"></i></div>
+      <h3>Landing Pages</h3>
+      <p>High-converting landing pages designed specifically to turn your visitors into leads and paying clients.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+      <h3>E-Commerce Solutions</h3>
+      <p>Complete online storefronts with seamless checkout flows to help you sell products directly to your audience.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+      <h3>Responsive Design</h3>
+      <p>Ensuring your website looks and functions perfectly across all devices — desktop, tablet, and mobile.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+      <h3>UI/UX Design</h3>
+      <p>Creating intuitive, user-centered interfaces that provide an engaging and effortless experience for your users.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
+      <h3>Performance Optimization</h3>
+      <p>Speeding up your website to improve Google rankings, keep visitors engaged, and boost overall conversions.</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-header fade-up">
+    <p class="section-tag">My Work</p>
+    <h2>Recent <span>Projects</span></h2>
+    <div class="divider"></div>
+    <p>A selection of websites built for real results</p>
+  </div>
+  <div class="filter-tabs fade-up" id="filterTabs">
+    <button class="filter-btn active" onclick="filterPortfolio('all', this)">All</button>
+    <button class="filter-btn" onclick="filterPortfolio('web', this)">Web Dev</button>
+    <button class="filter-btn" onclick="filterPortfolio('design', this)">Design</button>
+    <button class="filter-btn" onclick="filterPortfolio('app', this)">App</button>
+  </div>
+  <div class="portfolio-grid fade-up" id="portfolioGrid">
+  </div>
+</section>
+
+<section id="cta" class="fade-up">
+  <h2>Have a project in mind?</h2>
+  <p>I can help you build a website that attracts customers and grows your business.</p>
+  <a href="#contact" class="btn-primary">Start Your Project</a>
+</section>
+
+<section id="education">
+  <div class="section-header fade-up">
+    <p class="section-tag">Academic Background</p>
+    <h2>My <span>Education</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="edu-grid fade-up">
+    <div class="edu-card">
+      <div class="edu-icon"><i class="fas fa-university"></i></div>
+      <div class="edu-institute">Jaganath Kishore College, Purulia</div>
+      <h4>BSc Mathematics (Honours)</h4>
+      <p>Currently pursuing my undergraduate degree with a specialization in Mathematics.</p>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon"><i class="fas fa-school"></i></div>
+      <div class="edu-institute">Moutorh Manda Sundari High School (H.S)</div>
+      <h4>Higher Secondary (12th)</h4>
+      <p>Science stream with Physics, Chemistry, and Mathematics (PCM).</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header fade-up">
+    <p class="section-tag">Get In Touch</p>
+    <h2>Contact <span>Me</span></h2>
+    <div class="divider"></div>
+    <p>Let's discuss how we can work together.</p>
+  </div>
+  <div class="contact-grid fade-up">
+    <div class="contact-info">
+      <h3>Let’s build <span>your website</span></h3>
+      <p>I'm always open to discussing new projects, creative ideas, or opportunities to help your business grow. Don't hesitate to reach out!</p>
+      <p style="margin-top:10px; color:#aaa; font-size: 0.9rem; margin-bottom: 24px;">After you contact me, I’ll discuss your requirements and suggest the best solution for your project.</p>
+      
+      <div class="contact-item">
+        <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="c-detail"><strong>Location</strong><span>Vill - Khantra, Raghunathpur, Purulia, WB - 723145</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon"><i class="fas fa-envelope"></i></div>
+        <div class="c-detail"><strong>Email</strong><span><a href="mailto:baurianimesh957@gmail.com" style="color:inherit; text-decoration:none;">baurianimesh957@gmail.com</a></span></div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon"><i class="fas fa-phone"></i></div>
+        <div class="c-detail"><strong>Phone</strong><span><a href="tel:+916295650199" style="color:inherit; text-decoration:none;">+91 6295 650 199</a></span></div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon"><i class="fas fa-clock"></i></div>
+        <div class="c-detail"><strong>Response Time</strong><span>Within 24 hours</span></div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="c-detail"><strong>WhatsApp</strong><span><a href="https://wa.me/916295650199" target="_blank" style="color:inherit; text-decoration:none;">+91 6295 650 199</a></span></div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" action="https://formspree.io/f/maqalvlo" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" name="email" placeholder="john@email.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" />
+          </div>
+          <div class="form-group">
+            <label>Subject *</label>
+            <input type="text" name="subject" placeholder="Project Discussion" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select name="service">
+            <option>Business Website</option>
+            <option>Landing Page</option>
+            <option>E-Commerce</option>
+            <option>UI/UX Design</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message *</label>
+          <textarea name="message" placeholder="Tell me about your project requirements..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Port<span>folio.</span></div>
+  <div class="footer-socials">
+    <a href="https://github.com/Kiraa888" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="mailto:baurianimesh957@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    <a href="https://wa.me/916295650199" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/share/17GWVwkzK2/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/somesh_0620?igsh=ZXVyeWNhc2x3Nzdk" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+  <p>© 2026 <span>Animesh</span>. All Rights Reserved. Made with <span>❤️</span> in India</p>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+  /* ── SKILLS DATA ── */
+  const skills = [
+    { icon: 'fab fa-html5', name: 'HTML5', pct: 90 },
+    { icon: 'fab fa-css3-alt', name: 'CSS3', pct: 85 },
+    { icon: 'fab fa-js', name: 'JavaScript', pct: 75 },
+    { icon: 'fab fa-react', name: 'React.js', pct: 72 },
+    { icon: 'fab fa-python', name: 'Python', pct: 65 },
+    { icon: 'fab fa-node-js', name: 'Node.js', pct: 50 },
+    { icon: 'fab fa-figma', name: 'Figma', pct: 50 },
+    { icon: 'fab fa-git-alt', name: 'Git & GitHub', pct: 70 },
+  ];
+  const sg = document.getElementById('skillsGrid');
+  skills.forEach(s => {
+    sg.innerHTML += `
+      <div class="skill-card fade-up">
+        <i class="${s.icon}"></i>
+        <h4>${s.name}</h4>
+        <div class="skill-bar-bg"><div class="skill-bar" data-pct="${s.pct}" style="width:0"></div></div>
+        <div class="skill-pct">${s.pct}%</div>
+      </div>`;
+  });
+
+  /* ── PORTFOLIO DATA ── */
+  const projects = [
+    { 
+      imgSrc: 'https://iili.io/B4iGa4I.png', 
+      title: 'Business Website Landing Page', 
+      cat: 'web', 
+      type: 'Web Dev',
+      description: 'A responsive, high-converting business website designed to attract customers and generate leads.',
+      liveLink: 'https://kiraa888.github.io/Business-Website/',
+      repoLink: 'https://github.com/Kiraa888/Business-Website'
+    }
+  ];
+  
+  function renderPortfolio(cat) {
+    const pg = document.getElementById('portfolioGrid');
+    const filtered = cat === 'all' ? projects : projects.filter(p => p.cat === cat);
+    pg.innerHTML = filtered.map(p => {
+      // Icon Links for Image Overlay
+      const liveAnchor = p.liveLink === '#' 
+        ? `<a href="#" onclick="return false;" style="cursor:default;" title="Coming Soon"><i class="fas fa-external-link-alt"></i></a>` 
+        : `<a href="${p.liveLink}" target="_blank" rel="noopener noreferrer" title="View Live Site"><i class="fas fa-external-link-alt"></i></a>`;
+        
+      const repoAnchor = p.repoLink === '#' 
+        ? `<a href="#" onclick="return false;" style="cursor:default;" title="Coming Soon"><i class="fab fa-github"></i></a>` 
+        : `<a href="${p.repoLink}" target="_blank" rel="noopener noreferrer" title="View Source Code"><i class="fab fa-github"></i></a>`;
+
+      // New Text Button for underneath the description
+      const liveDemoBtn = p.liveLink === '#'
+        ? `<a href="#" onclick="return false;" class="port-demo-btn disabled"><i class="fas fa-lock"></i> Coming Soon</a>`
+        : `<a href="${p.liveLink}" target="_blank" rel="noopener noreferrer" class="port-demo-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
+
+      return `
+      <div class="port-card">
+        <div class="port-img">
+          <img src="${p.imgSrc}" alt="${p.title}" />
+          <div class="port-overlay">
+            ${liveAnchor}
+            ${repoAnchor}
+          </div>
+        </div>
+        <div class="port-info">
+          <span>${p.type}</span>
+          <h4>${p.title}</h4>
+          <p style="font-size:0.85rem; color:var(--text2); margin-top:8px; line-height:1.5;">${p.description}</p>
+          ${liveDemoBtn}
+        </div>
+      </div>`;
+    }).join('');
+  }
+  renderPortfolio('all');
+
+  function filterPortfolio(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPortfolio(cat);
+  }
+
+  /* ── SCROLL EFFECTS ── */
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('show', window.scrollY > 300);
+    // animate skill bars
+    document.querySelectorAll('.skill-bar').forEach(bar => {
+      const rect = bar.getBoundingClientRect();
+      if (rect.top < window.innerHeight && bar.style.width === '0px' || bar.style.width === '') {
+        bar.style.width = bar.dataset.pct + '%';
+      }
+    });
+  });
+
+  /* ── FLOATING NAV ACTIVE STATE ON SCROLL ── */
+  const sectionsNav = document.querySelectorAll('section');
+  const navIcons = document.querySelectorAll('.mobile-floating-nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sectionsNav.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navIcons.forEach(icon => {
+      icon.classList.remove('active');
+      if (icon.getAttribute('href').includes(current)) {
+        icon.classList.add('active');
+      }
+    });
+  });
+
+  /* ── INTERSECTION OBSERVER ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+</script>
+</body>
+</html>
